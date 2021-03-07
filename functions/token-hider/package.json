@@ -1,0 +1,11 @@
+{
+  "name": "token-hider",
+  "version": "1.0.0",
+  "main": "token-hider.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "googleapis": "^67.1.1",
+    "qs": "^6.9.6"
+  }
+}
