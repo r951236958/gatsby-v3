@@ -5,6 +5,7 @@ import { createApi } from 'unsplash-js'
 import ImageLayout from '../components/ImageLayout'
 import ImageSearch from '../components/ImageSearch'
 import SearchPhotos from '../components/SearchPhotos'
+import SearchInput from '../components/SearchInput'
 import SearchBooks from '../components/SearchBooks'
 import WitchImage from '../components/WitchImage'
 import ButtonDemo from '../components/ButtonDemo'
@@ -71,6 +72,7 @@ const Gallery = () => {
           <ButtonDemo />
           <WitchImage />
           <ImageGrid />
+          <SearchInput />
           <SearchPhotos />
         </div>
         <div className="max-w-1/2 container mx-auto">
