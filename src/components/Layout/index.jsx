@@ -1,22 +1,19 @@
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from "@material-ui/core/Container"
+import CssBaseline from "@material-ui/core/CssBaseline"
 import {
   // makeStyles,
   ThemeProvider,
-} from '@material-ui/core/styles'
-import { graphql, useStaticQuery } from 'gatsby'
-import Prism from 'prismjs'
-import React, {
-  useEffect,
-  // Suspense
-} from 'react'
-import Footer from '../Footer'
+} from "@material-ui/core/styles"
+import { graphql, useStaticQuery } from "gatsby"
+import Prism from "prismjs"
+import React, { useEffect } from "react"
+import DrawerLeft from "../DrawerLeft"
+import Footer from "../Footer"
+import Scroll from "../Scroll"
 // import Header from '../Header'
-import theme from '../theme'
-import Title from '../Title'
-import ViewPort from '../ViewPort'
-import DrawerLeft from '../DrawerLeft'
-import Scroll from '../Scroll'
+import theme from "../theme"
+import Title from "../Title"
+import ViewPort from "../ViewPort"
 
 // const useStyles = makeStyles((theme) => ({
 //   toolbar: theme.mixins.toolbar,
@@ -62,8 +59,8 @@ const Layout = ({ children, title }) => {
                 {children}
               </Container>
             </div>
-            <Footer />
           </DrawerLeft>
+          <Footer />
         </div>
       </ThemeProvider>
     </>

@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import InputBase from '@material-ui/core/InputBase'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
+// import InputBase from '@material-ui/core/InputBase'
+import Divider from "@material-ui/core/Divider"
+import IconButton from "@material-ui/core/IconButton"
+import Paper from "@material-ui/core/Paper"
+import { makeStyles } from "@material-ui/core/styles"
+import React, { useState } from "react"
 // import MenuIcon from '@material-ui/icons/Menu'
 // import SearchIcon from '@material-ui/icons/Search'
 // import DirectionsIcon from '@material-ui/icons/Directions'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
+    padding: "2px 4px",
+    display: "flex",
+    alignItems: "center",
     width: 400,
   },
   input: {
@@ -28,22 +28,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ReturnLeftIcon = (props) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-      {...props}
-    >
-      <path d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
-    </svg>
-  )
-}
+// const ReturnLeftIcon = props => {
+//   return (
+//     <svg
+//       xmlns="http://www.w3.org/2000/svg"
+//       width="20"
+//       height="20"
+//       fill="currentColor"
+//       viewBox="0 0 16 16"
+//       {...props}
+//     >
+//       <path d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+//     </svg>
+//   )
+// }
 
-const KeyboardReturnIcon = (props) => {
+const KeyboardReturnIcon = props => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ const KeyboardReturnIcon = (props) => {
   )
 }
 
-const SearchIcon = (props) => {
+const SearchIcon = props => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const SearchIcon = (props) => {
   )
 }
 
-const CloseIcon = (props) => {
+const CloseIcon = props => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -91,39 +91,52 @@ const CloseIcon = (props) => {
 
 export default function SearchInput() {
   const classes = useStyles()
+  const [inputValue, setTnputValue] = useState({ searchQuery: "" })
 
-  const handleSumbit = (e) => {
+  const inputValueChange = e => {
+    setTnputValue({ searchQuery: e.target.value })
+  }
+
+  const onFormSubmit = event => {
+    event.preventDefault()
+    setTnputValue(inputValue.searchQuery)
+  }
+
+  const handleReset = e => {
     e.preventDefault()
-    e.target.sumbit()
-    e.target.reset()
+    setTnputValue({ searchQuery: "" })
   }
 
   return (
     <Paper
       component="form"
-      className="flex w-400 px-2 py-1 text-center"
-      onSumbit={handleSumbit}
+      className="relative flex w-400 px-2 py-1 text-center"
+      onSubmit={onFormSubmit}
     >
-      <IconButton className={classes.iconButton} aria-label="searchIcon">
+      <IconButton className="p-2 w-1/12" aria-label="searchIcon">
         <SearchIcon />
       </IconButton>
       <input
-        id="seachImage"
-        name="search"
+        id="searchQuery"
+        name="searchQuery"
         typr="text"
-        className="flex flex-grow ml-1 bg-transparent"
+        value={inputValue.searchQuery}
+        className="flex flex-grow w-4/12 ml-1 bg-transparent focus:outline-none"
         placeholder="Search Images"
+        onChange={inputValueChange}
       />
-      <button className="p-2" type="rest">
-        <CloseIcon className="w-6 h-6" />
-      </button>
-      <Divider className={classes.divider} orientation="vertical" />
-      <IconButton
-        type="submit"
-        className={classes.iconButton}
-        aria-label="search"
+
+      <button
+        className="inline-block items-center p-2 w-1/12 right-auto"
+        type="reset"
+        onClick={handleReset}
       >
-        <ReturnLeftIcon />
+        <CloseIcon className={inputValue.searchQuery ? "w-6 h-6" : "hidden"} />
+      </button>
+
+      <Divider className={classes.divider} orientation="vertical" />
+      <IconButton type="submit" className="p-2 w-1/12" aria-label="search">
+        <KeyboardReturnIcon />
       </IconButton>
     </Paper>
   )

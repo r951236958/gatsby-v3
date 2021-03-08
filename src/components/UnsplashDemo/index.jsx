@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react"
-import PhotoComp from "../PhotoComp"
+import React, { useEffect, useState } from "react"
 import { createApi } from "unsplash-js"
+import LoadingIcon from "../LoadingIcon"
+// import UnsplashImage from "../UnsplashImage"
+import PhotoComp from "../PhotoComp"
 
 export const api = createApi({
   accessKey: process.env.GATSBY_UNSPLASH_ACCESS_KEY,
@@ -21,7 +23,7 @@ const UnsplashDemo = () => {
   }, [])
 
   if (data === null) {
-    return <div>Loading...</div>
+    return <LoadingIcon />
   } else if (data.errors) {
     return (
       <div>
@@ -31,14 +33,14 @@ const UnsplashDemo = () => {
     )
   } else {
     return (
-      <div className="feed">
-        <ul className="columnUl">
+      <div className="feed max-w-5xl">
+        <div className="columnUl grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4">
           {data.response.results.map(photo => (
-            <li key={photo.id} className="li">
-              <PhotoComp photo={photo} />
-            </li>
+            <>
+              <PhotoComp key={photo.id} photo={photo} />
+            </>
           ))}
-        </ul>
+        </div>
       </div>
     )
   }

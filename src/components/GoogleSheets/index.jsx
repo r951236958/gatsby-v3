@@ -6,11 +6,12 @@ import Paper from "@material-ui/core/Paper"
 import { makeStyles } from "@material-ui/core/styles"
 // import TextField from '@material-ui/core/TextField'
 import Typography from "@material-ui/core/Typography"
-import { navigate } from "gatsby"
 import axios from "axios"
+import { navigate } from "gatsby"
 import React, { useState } from "react"
-import TextField from "../TextField"
 import useGoogleSheets from "use-google-sheets"
+import LoadingIcon from "../LoadingIcon"
+import TextField from "../TextField"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10
@@ -70,7 +71,7 @@ function GoogleSheets() {
   })
 
   if (loading) {
-    return <div>Loading...</div>
+    return <LoadingIcon />
   }
 
   if (error) {

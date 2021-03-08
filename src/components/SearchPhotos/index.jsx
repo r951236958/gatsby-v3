@@ -1,10 +1,22 @@
-import React, { useState, useEffect } from "react"
+import Grid from "@material-ui/core/Grid"
+import Icon from "@material-ui/core/Icon"
+import { makeStyles } from "@material-ui/core/styles"
+import TextField from "@material-ui/core/TextField"
+import React, { useEffect, useState } from "react"
 import { createApi } from "unsplash-js"
-import PhotoComp from "../PhotoComp"
+import LoadingIcon from "../LoadingIcon"
+// import PhotoComp from "../PhotoComp"
+import UnsplashImage from "../UnsplashImage"
 
 const unsplash = createApi({
   accessKey: process.env.GATSBY_UNSPLASH_ACCESS_KEY,
 })
+
+const useStyles = makeStyles(theme => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+}))
 
 const Body = ({ query }) => {
   const [data, setPhotosResponse] = useState(null)
@@ -42,18 +54,15 @@ const Body = ({ query }) => {
       </div>
     )
   } else if (!isLoaded && data === null) {
-    return <div>Loading...</div>
+    return <LoadingIcon />
   } else {
     return (
       <div className="feed">
-        <div className="photos flex flex-wrap -mx-2 overflow-hidden">
+        <div className="photos columnUl grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4">
           {data.response.results.map(photo => (
-            <div
-              key={photo.id}
-              className="photocomp my-3 px-3 w-1/3 overflow-hidden"
-            >
-              <PhotoComp photo={photo} />
-            </div>
+            <>
+              <UnsplashImage key={photo.id} photo={photo} />
+            </>
           ))}
         </div>
       </div>
@@ -64,6 +73,7 @@ const Body = ({ query }) => {
 const SearchPhotos = () => {
   const [query, setQuery] = useState("")
   const [search, setSearch] = useState("")
+  const classes = useStyles()
 
   const handleSearchChange = e => {
     setSearch(e.target.value)
@@ -96,6 +106,16 @@ const SearchPhotos = () => {
           >
             Search
           </button>
+          <div className={classes.margin}>
+            <Grid container spacing={1} alignItems="flex-end">
+              <Grid item>
+                <Icon>search</Icon>
+              </Grid>
+              <Grid item>
+                <TextField id="input-with-icon-grid" label="With a grid" />
+              </Grid>
+            </Grid>
+          </div>
         </form>
       </div>
       <Body query={query} />

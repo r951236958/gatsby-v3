@@ -98,3 +98,5 @@ serviceAccountKey.*
 .vscode/
 
 static/src/*
+
+config.js

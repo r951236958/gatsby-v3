@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-
 import PropTypes from "prop-types"
+import React, { useEffect, useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 
 const ImageGallery = ({ images, loading, fetchImages }) => {
@@ -14,16 +12,21 @@ const ImageGallery = ({ images, loading, fetchImages }) => {
       loader={
         <p style={{ textAlign: "center", marginTop: "1%" }}>
           More doggo incoming{" "}
-          <span className="mx-2 space-x-2" role="img" arial-label="dog">
-            🐕 🐕
+          <span className="space-x-2">
+            <span role="img" aria-label="dog1">
+              🐕
+            </span>
+            <span role="img" aria-label="dog2">
+              🐕
+            </span>
+            ...
           </span>
-          ...
         </p>
       }
     >
       <div className="image-grid">
         {!loading
-          ? images.map(image => (
+          ? images.response.results.map(image => (
               <div className="image-item" key={image.id}>
                 <img src={image.urls.regular} alt={image.alt_description} />
               </div>
@@ -46,24 +49,46 @@ const InfiniteImages = () => {
 
   // Fetch Images from functions
   const fetchImages = () => {
-    setLoading(true)
-    fetch("/.netlify/functions/test")
-      .then(response => response.json())
-      .then(data => setImages({ loading: false, images: data }))
+    fetch("/.netlify/functions/fetch")
+      .then(result => {
+        setImages(result)
+        setLoading(true)
+      })
       .catch(error => {
         console.log("Error happened during fetching!", error)
       })
   }
 
   return (
-    <ImageGallery images={images} loading={loading} fetchImages={fetchImages} />
+    <div className="image-grid">
+      {loading ? (
+        images.result.response.map(image => (
+          <div className="image-item" key={image.id}>
+            <img src={image.urls.regular} alt={image.alt_description} />
+          </div>
+        ))
+      ) : (
+        <p style={{ textAlign: "center", marginTop: "1%" }}>
+          More doggo incoming{" "}
+          <span className="space-x-2">
+            <span role="img" aria-label="dog1">
+              🐕
+            </span>
+            <span role="img" aria-label="dog2">
+              🐕
+            </span>
+            ...
+          </span>
+        </p>
+      )}
+    </div>
   )
 }
 
-// ImageGallery.propTypes = {
-//   images: PropTypes.array,
-//   loading: PropTypes.bool,
-//   fetchImages: PropTypes.func,
-// }
+ImageGallery.propTypes = {
+  images: PropTypes.array,
+  loading: PropTypes.bool,
+  fetchImages: PropTypes.func,
+}
 
 export default InfiniteImages

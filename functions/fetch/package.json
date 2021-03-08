@@ -1,0 +1,11 @@
+{
+  "name": "fetch",
+  "version": "1.0.0",
+  "main": "fetch.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "fs": "^0.0.1-security",
+    "qs": "^6.9.6"
+  }
+}
