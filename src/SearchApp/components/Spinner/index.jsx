@@ -1,5 +1,5 @@
-import React from "react"
-import "./spinner.css"
+import React from 'react'
+import './spinner.css'
 
 const Spinner = () => {
   return (
@@ -19,10 +19,10 @@ const Spinner = () => {
           <div className="sk-circle sk-circle-11"></div>
           <div className="sk-circle sk-circle-12"></div>
         </div>
-        <h2 className="font-medium text-center text-purple-700 sm:text-lg  md:text-lg lg:text-xl xl:text-2xl w-full">
+        <h2 className="font-medium text-center text-cyan-700 sm:text-lg  md:text-lg lg:text-xl xl:text-2xl w-full">
           <span role="img" aria-label="bear image">
             🐻
-          </span>{" "}
+          </span>{' '}
           Bear with us while we are searching the photos for you.
         </h2>
       </section>

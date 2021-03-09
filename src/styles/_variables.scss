@@ -33,12 +33,12 @@ $rmd-link-visitied-color:$rmd-grey-100;
   }
 }
 
-body.dark,
-.dark-theme {
-  @include rmd-theme-dark;
-}
+// body.dark,
+// .dark-theme {
+//   @include rmd-theme-dark;
+// }
 
-body.light,
-.light-theme {
-  @include rmd-theme-light;
-}
+// body.light,
+// .light-theme {
+//   @include rmd-theme-light;
+// }

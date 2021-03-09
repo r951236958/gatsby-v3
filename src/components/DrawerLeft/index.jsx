@@ -13,6 +13,7 @@ import Container from '@material-ui/core/Container'
 
 import DrawerList from '../DrawerList'
 import AppBarMenuList from '../AppBarMenuList'
+import Title from '../Title'
 
 const drawerWidth = 240
 
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function DrawerLeft(props) {
-  const { children, siteTitle, window } = props
+  const { children, siteTitle, title, window } = props
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -116,15 +117,14 @@ export default function DrawerLeft(props) {
           </Drawer>
         </Hidden>
       </nav>
-      <main className="flex flex-grow max-w-full">
-        <Container
-          className="w-full min-h-screen mt-0 mb-auto py-2 px-4 sm:px-6 lg:px-8"
-          maxWidth="lg"
-        >
-          <div className={classes.toolbar} />
+
+      <Container component="main" maxWidth="md" className={classes.content}>
+        <div className={classes.toolbar} />
+        <div className="w-full min-h-screen mt-0 mb-auto mx-4 py-2 px-4 sm:px-6 lg:px-8">
+          <Title>{title}</Title>
           {children}
-        </Container>
-      </main>
+        </div>
+      </Container>
     </div>
   )
 }
