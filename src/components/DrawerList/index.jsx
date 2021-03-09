@@ -14,7 +14,7 @@ import React from "react"
 // import Toolbar from '@material-ui/core/Toolbar'
 // import Typography from '@material-ui/core/Typography'
 // import { makeStyles } from '@material-ui/core/styles'
-import { menuList } from "../../../config"
+import { menuList } from "../../config"
 // const drawerWidth = 240
 
 // const useStyles = makeStyles((theme) => ({

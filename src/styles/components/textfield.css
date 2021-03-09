@@ -66,3 +66,17 @@
 .textInput > input:focus-within ~ label {
   @apply text-blue-500 bg-gray-700;
 }
+
+#searchQuery::-webkit-search-cancel-button,
+#input::-webkit-search-cancel-butto,
+#inputWithButton::-webkit-search-cancel-butto,
+#inputWithGrid::-webkit-search-cancel-butto {
+  position:relative;
+  right:20px;  
+
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius:10px;
+  background: red;
+}
