@@ -8,9 +8,14 @@
 @import 'components/userprofile.css';
 @import 'components/image.css';
 @import 'components/unsplash.css';
+@import 'components/searchapp.css';
 
 main {
   min-height: 100vh;
+}
+
+body {
+  @apply bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
 }
 
 footer {
