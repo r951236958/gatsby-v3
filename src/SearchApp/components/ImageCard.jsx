@@ -1,18 +1,18 @@
-import React from "react"
+import React from 'react'
 
 const ImageCard = ({ image }) => {
   const { urls, description, likes } = image
   return (
     <>
-      <div className="hover column my-1 px-1 w-full overflow-hidden sm:my-3 sm:px-3 sm:w-1/2 md:my-3 md:px-3 md:w-1/2 lg:my-3 lg:px-3 lg:w-1/3 xl:my-3 xl:px-3 xl:w-1/3">
+      <div className="hover column">
         <figure className="relative">
           <img
             src={urls.regular}
             alt={description}
             className="w-full h-auto rounded shadow-full"
             style={{
-              height: "auto",
-              marginBottom: "0.5vw",
+              height: 'auto',
+              marginBottom: '0.5vw',
             }}
           />
           <div className="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">

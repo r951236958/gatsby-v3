@@ -1,18 +1,18 @@
-import Grid from "@material-ui/core/Grid"
-import Icon from "@material-ui/core/Icon"
-import { makeStyles } from "@material-ui/core/styles"
-import TextField from "@material-ui/core/TextField"
-import React, { useEffect, useState } from "react"
-import { createApi } from "unsplash-js"
-import LoadingIcon from "../LoadingIcon"
+import Grid from '@material-ui/core/Grid'
+import Icon from '@material-ui/core/Icon'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import React, { useEffect, useState } from 'react'
+import { createApi } from 'unsplash-js'
+import LoadingIcon from '../LoadingIcon'
 // import PhotoComp from "../PhotoComp"
-import UnsplashImage from "../UnsplashImage"
+import UnsplashImage from '../UnsplashImage'
 
 const unsplash = createApi({
   accessKey: process.env.GATSBY_UNSPLASH_ACCESS_KEY,
 })
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
   },
@@ -32,17 +32,17 @@ const Body = ({ query }) => {
         // orientation: 'squarish', // landscape, portrait, squarish
       })
       .then(
-        result => {
+        (result) => {
           setPhotosResponse(result)
           setIsLoaded(true)
         },
-        error => {
+        (error) => {
           setIsLoaded(true)
           setError(error)
         }
       )
       .catch(() => {
-        console.log("something went wrong!")
+        console.log('something went wrong!')
       })
   }, [query])
 
@@ -58,11 +58,11 @@ const Body = ({ query }) => {
   } else {
     return (
       <div className="feed">
-        <div className="photos columnUl grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-4">
-          {data.response.results.map(photo => (
-            <>
-              <UnsplashImage key={photo.id} photo={photo} />
-            </>
+        <div className="image-grid">
+          {data.response.results.map((photo) => (
+            <div className="image-item" key={photo.id}>
+              <UnsplashImage photo={photo} />
+            </div>
           ))}
         </div>
       </div>
@@ -71,15 +71,15 @@ const Body = ({ query }) => {
 }
 
 const SearchPhotos = () => {
-  const [query, setQuery] = useState("")
-  const [search, setSearch] = useState("")
+  const [query, setQuery] = useState('')
+  const [search, setSearch] = useState('')
   const classes = useStyles()
 
-  const handleSearchChange = e => {
+  const handleSearchChange = (e) => {
     setSearch(e.target.value)
   }
 
-  const onSearchSumbit = async e => {
+  const onSearchSumbit = async (e) => {
     e.preventDefault()
     setQuery(search)
   }
@@ -89,7 +89,7 @@ const SearchPhotos = () => {
       <div className="block">
         <form className="form" onSubmit={onSearchSumbit}>
           <label className="label" htmlFor="query">
-            {" "}
+            {' '}
             📷
           </label>
           <input

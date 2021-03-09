@@ -1,12 +1,14 @@
 // import './static/dist/css/tailwind.css'
-import "@fontsource/material-icons"
-import "@fontsource/roboto"
-import "@reach/dialog/styles.css"
-import "firebase/auth"
-import "firebase/firestore"
-import "firebase/functions"
-import "firebaseui/dist/firebaseui.css"
-import "prismjs/themes/prism-okaidia.css"
+import '@fontsource/material-icons'
+import '@fontsource/roboto'
+import '@reach/dialog/styles.css'
+import 'firebase/auth'
+import 'firebase/firestore'
+import 'firebase/functions'
+import 'firebaseui/dist/firebaseui.css'
+import 'prismjs/themes/prism-okaidia.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
 // export const wrapRootElement = wrapWithProvider
 // exports.replaceRouterComponent = ({ history }) => {
 //   const ConnectedRouterWrapper = ({ children }) => (
@@ -19,9 +21,8 @@ import "prismjs/themes/prism-okaidia.css"
 // import React from "react"
 // import Layout from "./src/index"
 // import wrapWithProvider from "./src/components/wrap-with-provider"
-import "./src/styles/global.scss"
-import "./src/styles/index.css"
-
+import './src/styles/global.scss'
+import './src/styles/index.css'
 
 // Logs when the client route changes
 // export const onRouteUpdate = ({ location, prevLocation }) => {
@@ -34,7 +35,6 @@ import "./src/styles/index.css"
 // }
 
 // export const wrapPageElement = ({ element, props }) => {
-    
-  
+
 //     return <Layout {...props}>{element}</Layout>
 //   }

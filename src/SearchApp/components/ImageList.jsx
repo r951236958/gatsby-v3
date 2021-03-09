@@ -1,16 +1,15 @@
-import React from "react"
-import ImageCard from "./ImageCard"
+import React from 'react'
+import ImageCard from './ImageCard'
 
 const ImageList = ({ photos }) => {
   return (
     <>
-      <div
-        id="photos"
-        className="photos -mx-1 overflow-hidden sm:-mx-3 md:-mx-3 lg:-mx-3 xl:-mx-3 grid grid-flow-row auto-rows-max"
-      >
-        {photos.map(image => {
-          return <ImageCard key={image.id} image={image} />
-        })}
+      <div id="photos" className="photos">
+        {photos.map((image) => (
+          <>
+            <ImageCard key={`image-${image.id}`} image={image} />
+          </>
+        ))}
       </div>
     </>
   )

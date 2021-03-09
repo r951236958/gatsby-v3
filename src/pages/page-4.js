@@ -1,16 +1,22 @@
-import * as React from "react"
-import InfiniteImages from "../components/InfiniteImages"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
-
-
+import React from 'react'
+import InfiniteImages from '../components/InfiniteImages'
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
+import { Link } from 'gatsby-theme-material-ui'
 const Page4 = () => {
-  const title = "404: Not found"
+  const title = 'Infinite Images'
   return (
     <Layout title={title}>
       <SEO title={title} />
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <div className="text-xl font-semibold">
+        Build a Performant Infinite Scroll Image Gallery using Gatsby and
+        Netlify functions
+      </div>
+      <Link href="https://morioh.com/p/29ac69a6468f">原文連結</Link>
+      <p className="text-md">
+        Build a Performant Infinite Scroll Image Gallery using Gatsby and
+        Netlify functions
+      </p>
       <InfiniteImages />
     </Layout>
   )

@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="mt-10 flex flex-wrap justify-center bg-purple-200 items-center py-1 fixed bottom-0 w-full">
+    <div className="mt-10 flex flex-wrap justify-center bg-purple-200 dark:text-gray-800 items-center py-1 fixed bottom-0 w-full">
       &copy; <p>Copyright {new Date().getFullYear()}.</p>
       <p>Made With </p>
       <i className="far fa-heart m-2 font-bold text-red-600"></i>
       <span>
-        By{" "}
+        By{' '}
         <a
           href="https://twitter.com/dev_hkjena"
           target="_blank"
