@@ -61,7 +61,7 @@ const Gallery = () => {
         <p className="mb-5 text-lg">
           Now this is the Law of the Jungle, as old and true as the sky, for as
           long as you keep scrolling, you shall find more doggo images{' '}
-          <span className="mx-2 space-x-2" role="img" arial-label="dogs">
+          <span className="mx-2 space-x-2" role="img" aria-label="dogs">
             {' '}
             🐶 🐕.
           </span>

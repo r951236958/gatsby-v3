@@ -3,6 +3,7 @@ import HomePage from '../components/HomePage'
 import GetForm from '../components/GetForm'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+import PlayerDemo from '../components/PlayerDemo'
 
 const Index = () => {
   const title = 'Home Page'
@@ -41,6 +42,7 @@ const Index = () => {
         <p>Welcome to your new Gatsby site.</p>
         <p>Now go build something great.</p>
       </div>
+      <PlayerDemo />
       <GetForm />
       <HomePage />
     </Layout>

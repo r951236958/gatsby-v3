@@ -17,7 +17,7 @@
     "format:js": "prettier '**/*.{js,jsx}' --write",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "start": "npm run develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
@@ -53,6 +53,7 @@
     "gatsby-theme-material-ui": "^1.0.13",
     "gatsby-transformer-sharp": "^3.0.0",
     "googleapis": "^67.1.1",
+    "http-proxy-middleware": "^1.0.6",
     "postcss": "^8.2.7",
     "postcss-import": "^14.0.0",
     "prettier": "^2.2.1",

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
-import PhotoComp from "../PhotoComp"
-import { createApi } from "unsplash-js"
+import React, { useState, useEffect } from 'react'
+import PhotoComp from '../PhotoComp'
+import LoadingIcon from '../LoadingIcon'
+import { createApi } from 'unsplash-js'
 
 export const api = createApi({
   accessKey: process.env.GATSBY_UNSPLASH_ACCESS_KEY,
@@ -11,17 +12,17 @@ const UnsplashDemo = () => {
 
   useEffect(() => {
     api.search
-      .getPhotos({ query: "cat", orientation: "landscape" })
-      .then(result => {
+      .getPhotos({ query: 'cat', orientation: 'landscape' })
+      .then((result) => {
         setPhotosResponse(result)
       })
       .catch(() => {
-        console.log("something went wrong!")
+        console.log('something went wrong!')
       })
   }, [])
 
   if (data === null) {
-    return <div>Loading...</div>
+    return <LoadingIcon />
   } else if (data.errors) {
     return (
       <div>
@@ -32,13 +33,13 @@ const UnsplashDemo = () => {
   } else {
     return (
       <div className="feed">
-        <ul className="columnUl">
-          {data.response.results.map(photo => (
-            <li key={photo.id} className="li">
-              <PhotoComp photo={photo} />
-            </li>
+        <div className="columnUl grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4">
+          {data.response.results.map((photo) => (
+            <>
+              <PhotoComp key={`id-${photo.id}`} photo={photo} />
+            </>
           ))}
-        </ul>
+        </div>
       </div>
     )
   }

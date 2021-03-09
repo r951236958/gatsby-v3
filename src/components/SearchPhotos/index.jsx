@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
-import { createApi } from "unsplash-js"
-import PhotoComp from "../PhotoComp"
+import React, { useState, useEffect } from 'react'
+import { createApi } from 'unsplash-js'
+import PhotoComp from '../PhotoComp'
+import LoadingIcon from '../LoadingIcon'
 
 const unsplash = createApi({
   accessKey: process.env.GATSBY_UNSPLASH_ACCESS_KEY,
@@ -20,17 +21,17 @@ const Body = ({ query }) => {
         // orientation: 'squarish', // landscape, portrait, squarish
       })
       .then(
-        result => {
+        (result) => {
           setPhotosResponse(result)
           setIsLoaded(true)
         },
-        error => {
+        (error) => {
           setIsLoaded(true)
           setError(error)
         }
       )
       .catch(() => {
-        console.log("something went wrong!")
+        console.log('something went wrong!')
       })
   }, [query])
 
@@ -42,12 +43,12 @@ const Body = ({ query }) => {
       </div>
     )
   } else if (!isLoaded && data === null) {
-    return <div>Loading...</div>
+    return <LoadingIcon />
   } else {
     return (
       <div className="feed">
         <div className="photos flex flex-wrap -mx-2 overflow-hidden">
-          {data.response.results.map(photo => (
+          {data.response.results.map((photo) => (
             <div
               key={photo.id}
               className="photocomp my-3 px-3 w-1/3 overflow-hidden"
@@ -62,14 +63,14 @@ const Body = ({ query }) => {
 }
 
 const SearchPhotos = () => {
-  const [query, setQuery] = useState("")
-  const [search, setSearch] = useState("")
+  const [query, setQuery] = useState('')
+  const [search, setSearch] = useState('')
 
-  const handleSearchChange = e => {
+  const handleSearchChange = (e) => {
     setSearch(e.target.value)
   }
 
-  const onSearchSumbit = async e => {
+  const onSearchSumbit = async (e) => {
     e.preventDefault()
     setQuery(search)
   }
@@ -79,7 +80,7 @@ const SearchPhotos = () => {
       <div className="block">
         <form className="form" onSubmit={onSearchSumbit}>
           <label className="label" htmlFor="query">
-            {" "}
+            {' '}
             📷
           </label>
           <input

@@ -1,4 +1,3 @@
-import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {
   // makeStyles,
@@ -43,8 +42,6 @@ const Layout = ({ children, title }) => {
 
   // const classes = useStyles()
 
-  // const isSSR = typeof window === "undefined"
-
   return (
     <>
       <ViewPort />
@@ -53,15 +50,8 @@ const Layout = ({ children, title }) => {
         <div className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
           <DrawerLeft siteTitle={data.site.siteMetadata.title}>
             <Scroll showBelow={250} />
-            <div className="max-w-full mt-0 mb-auto mx-auto pt-0 pb-5 px-4">
-              <Container
-                className="min-h-screen py-2 px-4 sm:px-6 lg:px-8"
-                maxWidth="lg"
-              >
-                <Title>{title}</Title>
-                {children}
-              </Container>
-            </div>
+            <Title>{title}</Title>
+            {children}
             <Footer />
           </DrawerLeft>
         </div>

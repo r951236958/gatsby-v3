@@ -1,16 +1,17 @@
-import Button from "@material-ui/core/Button"
-import Grid from "@material-ui/core/Grid"
-import Link from "@material-ui/core/Link"
-import Modal from "@material-ui/core/Modal"
-import Paper from "@material-ui/core/Paper"
-import { makeStyles } from "@material-ui/core/styles"
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import Link from '@material-ui/core/Link'
+import Modal from '@material-ui/core/Modal'
+import Paper from '@material-ui/core/Paper'
+import { makeStyles } from '@material-ui/core/styles'
 // import TextField from '@material-ui/core/TextField'
-import Typography from "@material-ui/core/Typography"
-import { navigate } from "gatsby"
-import axios from "axios"
-import React, { useState } from "react"
-import TextField from "../TextField"
-import useGoogleSheets from "use-google-sheets"
+import Typography from '@material-ui/core/Typography'
+import { navigate } from 'gatsby'
+import axios from 'axios'
+import React, { useState } from 'react'
+import TextField from '../TextField'
+import LoadingIcon from '../LoadingIcon'
+import useGoogleSheets from 'use-google-sheets'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10
@@ -27,24 +28,24 @@ function getModalStyle() {
   }
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   modal: {
-    position: "absolute",
+    position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
   paper: {
     margin: theme.spacing(8, 4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   submit: {
     margin: theme.spacing(1),
@@ -58,10 +59,10 @@ function GoogleSheets() {
   const [modalOpen, setModalOpen] = useState(false)
 
   const [formValue, setFormVale] = useState({
-    name: "",
-    age: "",
-    salary: "",
-    hobby: "",
+    name: '',
+    age: '',
+    salary: '',
+    hobby: '',
   })
 
   const { data, loading, error } = useGoogleSheets({
@@ -70,28 +71,28 @@ function GoogleSheets() {
   })
 
   if (loading) {
-    return <div>Loading...</div>
+    return <LoadingIcon />
   }
 
   if (error) {
     return <div>Error!</div>
   }
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setFormVale({
       ...formValue,
       [event.target.name]: event.target.value,
     })
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("data on submit", formValue)
+    console.log('data on submit', formValue)
 
     const connectionURL =
-      "https://sheet.best/api/sheets/42627f2d-e682-427a-928a-154ff1e109df"
+      'https://sheet.best/api/sheets/42627f2d-e682-427a-928a-154ff1e109df'
 
-    axios.post(connectionURL, formValue).then(response => {
+    axios.post(connectionURL, formValue).then((response) => {
       console.log(response)
       navigate(`/thankyou`)
     })
