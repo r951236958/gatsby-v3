@@ -515,11 +515,3 @@ pre tt:after {
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
-
-a .material-icons, button .material-icons {
-  @apply mr-2;
-}
-
-#mylink .material-icons {
-  @apply group-hover:text-cyan-400;
-}

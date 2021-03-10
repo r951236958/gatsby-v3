@@ -1,19 +1,19 @@
-import CssBaseline from "@material-ui/core/CssBaseline"
+import CssBaseline from '@material-ui/core/CssBaseline'
 import {
   // makeStyles,
   ThemeProvider,
-} from "@material-ui/core/styles"
-import { graphql, useStaticQuery } from "gatsby"
-import Prism from "prismjs"
-import React, { useEffect } from "react"
-import Footer from "../Footer"
-import Footer3 from "../Footer3"
-import Scroll from "../Scroll"
+} from '@material-ui/core/styles'
+import { graphql, useStaticQuery } from 'gatsby'
+import Prism from 'prismjs'
+import React, { useEffect } from 'react'
+import Footer from '../Footer'
+import Footer3 from '../Footer3'
+import Scroll from '../Scroll'
 // import Header from '../Header'
-import theme from "../theme"
-import Title from "../Title"
-import TopBar from "../TopBar"
-import ViewPort from "../ViewPort"
+import theme from '../theme'
+import Title from '../Title'
+import TopBar from '../TopBar'
+import ViewPort from '../ViewPort'
 
 // const useStyles = makeStyles((theme) => ({
 //   toolbar: theme.mixins.toolbar,
@@ -49,13 +49,13 @@ const Layout = ({ children, title }) => {
           {/* <DrawerLeft siteTitle={data.site.siteMetadata.title}> */}
           <TopBar siteTitle={data.site.siteMetadata.title} />
           <Scroll showBelow={250} />
-          <div className="max-w-screen-lg mt-10 mx-auto pt-0 px-4 pb-6">
-            <main>
+          <main>
+            <div className="max-w-screen-lg mt-10 mx-auto pt-0 px-4 pb-6">
               <Title>{title}</Title>
 
               {children}
-            </main>
-          </div>
+            </div>
+          </main>
           {/* </DrawerLeft> */}
           <Footer />
           <Footer3 />
