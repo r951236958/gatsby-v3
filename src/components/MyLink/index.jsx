@@ -10,7 +10,7 @@ const MyLink = () => {
           <>
             <div className="group">
               <a
-                key={Math.random().toString(36).substr(2, 9)}
+                key={`link-group-${items.id}`}
                 href={items.link}
                 className="mt-3 flex items-start rounded-lg border border-gray-700 group-hover:border-cyan-400 px-5 py-3 text-base font-medium text-white group-hover:bg-gray-300 group-hover:bg-opacity-10 transition ease-in-out duration-150"
               >

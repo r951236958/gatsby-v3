@@ -1,11 +1,11 @@
-import VisuallyHidden from "@reach/visually-hidden"
-import { navigate } from "gatsby"
-import firebase from "gatsby-plugin-firebase"
-import { Link } from "gatsby-theme-material-ui"
-import PropTypes from "prop-types"
-import React, { useEffect, useState } from "react"
-import { menuList } from "../../config"
-import { getUser, isLoggedIn, logout } from "../../utils/auth"
+import VisuallyHidden from '@reach/visually-hidden'
+import { navigate } from 'gatsby'
+import firebase from 'gatsby-plugin-firebase'
+import { Link } from 'gatsby-theme-material-ui'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
+import { menuList } from '../../config'
+import { getUser, isLoggedIn, logout } from '../../utils/auth'
 
 export default function TopBar({ siteTitle }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -48,7 +48,7 @@ export default function TopBar({ siteTitle }) {
                 <svg
                   width="27"
                   height="27"
-                  className={(!menuOpen ? "block" : "hidden") + " h-6 w-6"}
+                  className={(!menuOpen ? 'block' : 'hidden') + ' h-6 w-6'}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -71,7 +71,7 @@ export default function TopBar({ siteTitle }) {
                   width="27"
                   height="27"
                   className={
-                    (menuOpen ? "block md:hidden" : "hidden") + " h-6 w-6"
+                    (menuOpen ? 'block md:hidden' : 'hidden') + ' h-6 w-6'
                   }
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -299,7 +299,7 @@ export default function TopBar({ siteTitle }) {
 
                 <button
                   className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  onClick={async event => {
+                  onClick={async (event) => {
                     event.preventDefault()
                     await logout(firebase).then(() => navigate(`/app/login`))
                   }}
@@ -336,7 +336,7 @@ export default function TopBar({ siteTitle }) {
 
                 <button
                   className="block px-3 py-2 rounded-md text-base hover:no-underline font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                  onClick={async event => {
+                  onClick={async (event) => {
                     event.preventDefault()
                     await logout(firebase).then(() => navigate(`/app/login`))
                   }}

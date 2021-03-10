@@ -1,5 +1,7 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import ImageCard from './ImageCard'
+import PropTypes from 'prop-types'
 
 const ImageGallery = ({ images, loading, fetchImages }) => {
   // Create gallery here
@@ -23,20 +25,26 @@ const ImageGallery = ({ images, loading, fetchImages }) => {
         </p>
       }
     >
-      <div className="image-grid">
+      <div id="photosCoul" className="photos">
         {!loading
           ? images.map((image) => (
-              <div
-                className="image-item"
-                key={`${image.user.username}-${image.id}`}
-              >
-                <img src={image.urls.regular} alt={image.alt_description} />
-              </div>
+              <>
+                <ImageCard
+                  key={`image-gallery-card-${image.id}`}
+                  image={image}
+                />
+              </>
             ))
           : ''}
       </div>
     </InfiniteScroll>
   )
+}
+
+ImageGallery.propTypes = {
+  images: PropTypes.array,
+  loading: PropTypes.func,
+  fetchImages: PropTypes.func,
 }
 
 export default ImageGallery

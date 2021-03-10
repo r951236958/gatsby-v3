@@ -64,7 +64,7 @@ const Body = () => {
       <div className="feed">
         <div className="image-grid">
           {data.response.results.map((photo) => (
-            <div className="image-item" key={photo.id}>
+            <div className="image-item" key={`photo-comp-feed-${photo.id}`}>
               <PhotoComp photo={photo} />
             </div>
           ))}

@@ -17,22 +17,22 @@ const SearchBar = ({ OnSubmit, visibility }) => {
       <div className="relative flex items-center justify-center w-full sm:w-2/4 md:w-2/5 lg:w-2/5 xl:w-2/5">
         <input
           id="input"
-          className="outline-none appearance-none w-8/12 ease-out duration-500 bg-transparent rounded-full border shadow border-cyan-500 my-4  placeholder-gray-600 dark:placeholder-gray-400 py-2 px-2 leading-tight focus:ouline-none"
+          className="outline-none appearance-none w-8/12 ease-out duration-500 bg-transparent rounded-full border shadow border-cyan-500 my-4  placeholder-gray-600 dark:placeholder-gray-400 p-2 leading-tight focus:ouline-none"
           type="search"
           placeholder="Search Photos"
           value={term}
           required
-          onChange={e => setTerm(e.target.value)}
+          onChange={(e) => setTerm(e.target.value)}
         />
         <button
           className="absolute flex-shrink height-full right-0 rounded-full shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 max-w-lg"
           type="submit"
         >
-          Search{" "}
+          Search{' '}
           <span
             className="fas fa-circle-notch"
             style={{
-              animation: "1s linear infinite wheel",
+              animation: '1s linear infinite wheel',
             }}
             hidden={visibility}
           ></span>

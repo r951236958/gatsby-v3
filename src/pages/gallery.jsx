@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react"
-import { createApi } from "unsplash-js"
-import ButtonDemo from "../components/ButtonDemo"
+import React, { useEffect, useState } from 'react'
+import { createApi } from 'unsplash-js'
+import ButtonDemo from '../components/ButtonDemo'
 // import ImageBox from "../components/ImageBox"
-import ImageGrid from "../components/ImageGrid"
-import ImageLayout from "../components/ImageLayout"
-import ImageSearch from "../components/ImageSearch"
-import Layout from "../components/Layout"
-import LoadingIcon from "../components/LoadingIcon"
-import PhotoLayout from "../components/PhotoLayout"
-import SearchBooks from "../components/SearchBooks"
-import SearchInput from "../components/SearchInput"
-import SearchPhotos from "../components/SearchPhotos"
-import SEO from "../components/SEO"
-import WitchImage from "../components/WitchImage"
+import ImageGrid from '../components/ImageGrid'
+import ImageLayout from '../components/ImageLayout'
+import ImageSearch from '../components/ImageSearch'
+import Layout from '../components/Layout'
+import LoadingIcon from '../components/LoadingIcon'
+import PhotoLayout from '../components/PhotoLayout'
+import SearchBooks from '../components/SearchBooks'
+import SearchInput from '../components/SearchInput'
+import SearchPhotos from '../components/SearchPhotos'
+import SEO from '../components/SEO'
+import WitchImage from '../components/WitchImage'
 
 const unsplash = createApi({
   // Don't forget to set your access token here!
@@ -21,11 +21,11 @@ const unsplash = createApi({
 })
 
 const Gallery = () => {
-  const title = "Images from Unsplash..."
+  const title = 'Images from Unsplash...'
   // const [images, setImages] = useState([])
   const [data, setPhotosResponse] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [term, setTerm] = useState("")
+  const [term, setTerm] = useState('')
 
   useEffect(() => {
     // api.search
@@ -34,14 +34,14 @@ const Gallery = () => {
       .getPhotos({
         query: `${term}`,
         perPage: 10,
-        orientation: "landscape",
+        orientation: 'landscape',
       })
-      .then(result => {
+      .then((result) => {
         setPhotosResponse(result)
         setIsLoading(false)
       })
       .catch(() => {
-        console.log("something went wrong!")
+        console.log('something went wrong!')
       })
     // collectionIds: ['abc123'],
     // featured: true,
@@ -86,9 +86,9 @@ const Gallery = () => {
       <div>
         <p className="mb-5 text-lg">
           Now this is the Law of the Jungle, as old and true as the sky, for as
-          long as you keep scrolling, you shall find more doggo images{" "}
+          long as you keep scrolling, you shall find more doggo images{' '}
           <span className="mx-2 space-x-2" role="img" aria-label="dogs">
-            {" "}
+            {' '}
             🐶 🐕.
           </span>
         </p>
@@ -146,7 +146,7 @@ const Gallery = () => {
           </pre>
         </div>
         <div className="max-w-1/2 container mx-auto">
-          <ImageSearch searchText={text => setTerm(text)} />
+          <ImageSearch searchText={(text) => setTerm(text)} />
           {data === null && (
             <h1 className="text-5xl text-center mx-auto mt-32">
               No Images Found
@@ -156,8 +156,11 @@ const Gallery = () => {
             <LoadingIcon />
           ) : (
             <div className="grid m-2 lg:grid-cols-3 md:grid-cols-2 md:gap-4">
-              {data.response.results.map(image => (
-                <ImageLayout key={image.id} image={image}></ImageLayout>
+              {data.response.results.map((image) => (
+                <ImageLayout
+                  key={`image-layout-${image.id}`}
+                  image={image}
+                ></ImageLayout>
               ))}
             </div>
           )}

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 
 function useAsyncHook(searchBook) {
   const [result, setResult] = useState([])
-  const [loading, setLoading] = useState("false")
+  const [loading, setLoading] = useState('false')
 
   useEffect(() => {
     async function fetchBookList() {
@@ -10,7 +10,7 @@ function useAsyncHook(searchBook) {
       //   const URL = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=1&query=${searchBook}`
 
       try {
-        setLoading("true")
+        setLoading('true')
         const response = await fetch(
           `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=1&query=${searchBook}`
         )
@@ -18,17 +18,17 @@ function useAsyncHook(searchBook) {
         const json = await response.json()
         // console.log(json);
         setResult(
-          json.items.map(item => {
+          json.items.map((item) => {
             console.log(item.links.html)
             return item.user.name
           })
         )
       } catch (error) {
-        setLoading("null")
+        setLoading('null')
       }
     }
 
-    if (searchBook !== "") {
+    if (searchBook !== '') {
       fetchBookList()
     }
   }, [searchBook])
@@ -37,15 +37,15 @@ function useAsyncHook(searchBook) {
 }
 
 const SearchBooks = () => {
-  const [search, setSearch] = useState("")
-  const [query, setQuery] = useState("")
+  const [search, setSearch] = useState('')
+  const [query, setQuery] = useState('')
   const [result, loading] = useAsyncHook(query)
 
   return (
     <div className="Books">
       <h3>Search for Books on any Topic</h3>
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault()
           setQuery(search)
         }}
@@ -56,7 +56,7 @@ const SearchBooks = () => {
           id="searchbar"
           name="search"
           type="text"
-          onChange={e => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <input
           className="px-6 py-2 text-base bg-transparent hover:bg-teal-200 hover:bg-opacity-10 rounded-md border border-teal-500 hover:border-teal-600 mx-4"
@@ -65,13 +65,13 @@ const SearchBooks = () => {
         />
       </form>
 
-      {loading === "false" ? (
+      {loading === 'false' ? (
         <h1>Search for Books</h1>
-      ) : loading === "null" ? (
+      ) : loading === 'null' ? (
         <h1>No Book Found</h1>
       ) : (
-        result.map((item, i) => {
-          return <p key={i}>Book Title : {item}</p>
+        result.map((item) => {
+          return <p key={`search-book-${item.id}`}>Book Title : {item}</p>
         })
       )}
     </div>

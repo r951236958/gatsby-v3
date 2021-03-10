@@ -4,7 +4,7 @@ const ImageCard = ({ image }) => {
   const { urls, description, likes } = image
   return (
     <>
-      <div className="hover column">
+      <div className="hover column" key="image-column-card">
         <figure className="relative">
           <img
             src={urls.regular}

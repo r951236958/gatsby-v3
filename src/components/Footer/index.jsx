@@ -161,13 +161,13 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 mt-8 lg:mt-12 border-t-2 border-gray-700 pt-8">
-          <nav className="flex flex-wrap justify-center space-x-6">
-            <div className="w-full md:w-4/12 px-4">
-              <div className="text-sm text-white font-semibold py-1">
+        <div className="max-w-screen-xl container mx-auto px-4 justify-center lg:justify-bettwn md:space-y-6 items-center mt-8 lg:mt-12 border-t-2 border-gray-700 pt-8">
+          <nav className="flex inlin-flex items-center justify-center space-x-6">
+            <div className="w-full lg:w-6/12 px-4">
+              <div className="text-sm text-white left-0">
                 Built with{' '}
                 <Link
-                  className="font-normal text-sm mb-2"
+                  className="font-semibold text-sm"
                   color="inherit"
                   href="https://www.gatsbyjs.com"
                 >
@@ -175,11 +175,13 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
+            <div className="w-full lg:w-6/12 px-4">
+              <p className="text-sm right-0 text-center md:text-right">
+                &copy; {new Date().getFullYear()} Company. All rights reserved.
+                | All rights reserved
+              </p>
+            </div>
           </nav>
-          <p className="text-sm text-center md:text-right">
-            &copy; {new Date().getFullYear()} Company. All rights reserved. |
-            All rights reserved
-          </p>
         </div>
       </footer>
     </>

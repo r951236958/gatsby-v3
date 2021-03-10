@@ -59,7 +59,7 @@ const Body = ({ query }) => {
       <div className="feed">
         <div className="image-grid">
           {data.response.results.map((photo) => (
-            <div className="image-item" key={photo.id}>
+            <div className="image-item" key={`image-grid-${photo.id}`}>
               <UnsplashImage photo={photo} />
             </div>
           ))}

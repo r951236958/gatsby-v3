@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 const ImageCard = ({ image }) => {
   // const tags = image.tags.split(',')
@@ -39,9 +39,9 @@ const ImageCard = ({ image }) => {
 
       {/*
       <div className="px-6 py-4">
-        {image.map((tag, index) => (
+        {image.map((tag) => (
           <span
-            key={index}
+            key={tag.id}
             className="inline-block bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
           >
             #{tag}
