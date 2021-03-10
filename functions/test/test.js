@@ -1,14 +1,14 @@
-require("dotenv").config()
-const axios = require("axios")
-const qs = require("qs")
+require('dotenv').config()
+const axios = require('axios')
+// const qs = require("qs")
 // import { createApi } from 'unsplash-js'
 
 // const unsplash = creatApi({ accessKey: process.env.GATSBY_UNSPLASH_ACCESS_KEY })
 
 const handler = async function (event, context, callback) {
-  const apiRoot = "https://api.unsplash.com"
+  const apiRoot = 'https://api.unsplash.com'
   const accessKey = process.env.GATSBY_UNSPLASH_ACCESS_KEY
-  const count = "10"
+  const count = '10'
   // const API_PARAMS = qs.stringify(event.queryStringParameters)
   const doggoEndpoint = `${apiRoot}/photos/random?client_id=${accessKey}&count=${count}`
   // const URL = `https://api.unsplash.com/photos/random?client_id=${accessKey}&count=12&query=${API_PARAMS}`

@@ -1,6 +1,6 @@
 // import IconButton from "@material-ui/core/IconButton"
-import { Link } from "gatsby-theme-material-ui"
-import React from "react"
+import { Link } from 'gatsby-theme-material-ui'
+import React from 'react'
 
 export default function Footer() {
   return (
@@ -163,18 +163,17 @@ export default function Footer() {
         </div>
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 mt-8 lg:mt-12 border-t-2 border-gray-700 pt-8">
           <nav className="flex flex-wrap justify-center space-x-6">
-            <div classname="w-full md:w-4/12 px-4">
-              <div classname="text-sm text-white font-semibold py-1">
-            Built with
-            {" "}
-            <Link
-              className="font-normal text-sm mb-2"
-              color="inherit"
-              href="https://www.gatsbyjs.com"
-            >
-              Gatsby
-            </Link>
-            </div>
+            <div className="w-full md:w-4/12 px-4">
+              <div className="text-sm text-white font-semibold py-1">
+                Built with{' '}
+                <Link
+                  className="font-normal text-sm mb-2"
+                  color="inherit"
+                  href="https://www.gatsbyjs.com"
+                >
+                  Gatsby
+                </Link>
+              </div>
             </div>
           </nav>
           <p className="text-sm text-center md:text-right">

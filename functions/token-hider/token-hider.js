@@ -1,12 +1,12 @@
-const axios = require("axios")
-const qs = require("qs")
+const axios = require('axios')
+const qs = require('qs')
 
 exports.handler = async function (event, context) {
   // apply our function to the queryStringParameters and assign it to a variable
   const API_PARAMS = qs.stringify(event.queryStringParameters)
   // Get env var values defined in our Netlify site UI
   // TODO: change this
-  const { API_SECRET = "shiba" } = process.env
+  // const { API_SECRET = "shiba" } = process.env
   const accessKey = process.env.GATSBY_UNSPLASH_ACCESS_KEY
   const URL = `https://api.unsplash.com/photos/random?client_id=${accessKey}&count=12&query=${API_PARAMS}`
   // const URL = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=1&query=${API_PARAMS}`
@@ -14,7 +14,7 @@ exports.handler = async function (event, context) {
   // this is secret too, your frontend won't see this
   // const URL = `https://dog.ceo/api/breed/${API_SECRET}/images`
 
-  console.log("Constructed URL is ...", URL)
+  console.log('Constructed URL is ...', URL)
 
   try {
     const { data } = await axios.get(URL)

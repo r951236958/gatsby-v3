@@ -1,5 +1,4 @@
 import Grid from '@material-ui/core/Grid'
-import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import React, { useEffect, useState } from 'react'
@@ -109,7 +108,7 @@ const SearchPhotos = () => {
           <div className={classes.margin}>
             <Grid container spacing={1} alignItems="flex-end">
               <Grid item>
-                <Icon>search</Icon>
+                <i className="material-icons">search</i>
               </Grid>
               <Grid item>
                 <TextField id="inputWithGrid" label="With a grid" />
