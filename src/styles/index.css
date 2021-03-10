@@ -5,7 +5,6 @@
 
 @import 'global.css';
 @import 'components/textfield.css';
-@import 'components/userprofile.css';
 @import 'components/image.css';
 @import 'components/unsplash.css';
 @import 'components/searchapp.css';
@@ -16,7 +15,7 @@ main {
 }
 
 body {
-  @apply min-h-screen bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100;
+  @apply min-h-screen bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100;
 }
 
 footer {
@@ -515,4 +514,12 @@ pre tt:after {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+}
+
+a .material-icons, button .material-icons {
+  @apply mr-2;
+}
+
+#mylink .material-icons {
+  @apply group-hover:text-cyan-400;
 }

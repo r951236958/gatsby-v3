@@ -21,7 +21,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 // import React from "react"
 // import Layout from "./src/index"
 // import wrapWithProvider from "./src/components/wrap-with-provider"
-import './src/styles/global.scss'
+// import './src/styles/global.scss'
 import './src/styles/index.css'
 
 // Logs when the client route changes

@@ -1,34 +1,24 @@
-// import { Divider } from "@react-md/divider"
-import { TextIconSpacing } from "@react-md/icon"
-// import { List } from "@react-md/list"
-// import { MenuItemLink } from "@react-md/menu"
-// import { Link as RouterLink } from "gatsby"
-import React from "react"
-import { linkList } from "../../config"
+import React from 'react'
+import { linkList } from '../../config'
 
 const MyLink = () => {
   // const MenuLink = props => <MenuItemLink {...props} component={RouterLink} />
   return (
     <>
-      <ul className="lg:w-1/2 w-full border border-gray-400 border-opacity-60 divide-y-2 divide-gray-400 divide-opacity-60 rounded my-3 mx-auto">
-        {linkList.map((items, i) => (
+      <div id="mylink" className="group max-w-xl lg:mx-auto lg:max-w-md">
+        {linkList.map((items, index) => (
           <>
-            <li
-              className="my-2 text-gray-300 hover:text-white hover:bg-gray-900 hover:bg-opacity-30"
-              key={`my-link-${i}`}
+            <a
+              key={index}
+              href={items.link}
+              className="mt-3 flex items-start rounded-lg border border-gray-700 group-hover:border-cyan-400 px-5 py-3 text-base font-medium text-white group-hover:bg-gray-800 transition ease-in-out duration-150"
             >
-              <a
-                href={items.link}
-                className="mx-2 text-base flex px-3 py-4 pl-3"
-              >
-                <TextIconSpacing className="mr-4" icon={items.icon}>
-                  {items.name}
-                </TextIconSpacing>
-              </a>
-            </li>
+              {items.icon}
+              {items.name}
+            </a>
           </>
         ))}
-      </ul>
+      </div>
     </>
   )
 }
