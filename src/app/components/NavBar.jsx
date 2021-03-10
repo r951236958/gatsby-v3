@@ -1,6 +1,5 @@
-import { navigate } from "gatsby"
+import { Link, navigate } from "gatsby"
 import firebase from "gatsby-plugin-firebase"
-import { Link } from "gatsby-theme-material-ui"
 import React from "react"
 import StatusAlert from "../../components/StatusAlert"
 import { isLoggedIn, logout } from "../../utils/auth"

@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import AppBar from "@material-ui/core/AppBar"
+import Container from "@material-ui/core/Container"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import Drawer from "@material-ui/core/Drawer"
+import Hidden from "@material-ui/core/Hidden"
+import IconButton from "@material-ui/core/IconButton"
 // import clsx from 'clsx'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import AppBar from '@material-ui/core/AppBar'
+import { makeStyles, useTheme } from "@material-ui/core/styles"
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Hidden from '@material-ui/core/Hidden'
-import IconButton from '@material-ui/core/IconButton'
+import Typography from "@material-ui/core/Typography"
 import MenuIcon from '@material-ui/icons/Menu'
-import Container from '@material-ui/core/Container'
-
-import DrawerList from '../DrawerList'
+import React, { useState } from "react"
 import AppBarMenuList from '../AppBarMenuList'
+import DrawerList from "../DrawerList"
 import Title from '../Title'
+
 
 const drawerWidth = 240
 
@@ -92,7 +92,7 @@ export default function DrawerLeft(props) {
           <Drawer
             container={container}
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
@@ -118,7 +118,7 @@ export default function DrawerLeft(props) {
         </Hidden>
       </nav>
 
-      <Container component="main" maxWidth="md" className={classes.content}>
+      <Container component="main" maxWidth="lg" className={classes.content}>
         <div className={classes.toolbar} />
         <div className="w-full min-h-screen mt-0 mb-auto mx-4 py-2 px-4 sm:px-6 lg:px-8">
           <Title>{title}</Title>

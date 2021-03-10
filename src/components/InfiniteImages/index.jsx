@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
-import ImageGallery from '../ImageGallery'
-import axios from 'axios'
+import axios from "axios"
+import PropTypes from "prop-types"
+import React, { useCallback, useEffect, useState } from "react"
+import ImageGallery from "../ImageGallery"
 
-const accessKEY = process.env.GATSBY_UNSPLASH_ACCESS_KEY
+// const accessKEY = process.env.GATSBY_UNSPLASH_ACCESS_KEY
 
 const SearchBar = () => {
-  const [term, setTerm] = useState('')
+  const [term, setTerm] = useState("")
 
   // const formSubmit = (e) => {
   //   e.preventDefault()
@@ -17,7 +17,7 @@ const SearchBar = () => {
   //   setTerm('')
   // }
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = e => {
     e.preventDefault()
     console.log(term)
   }
@@ -37,7 +37,7 @@ const SearchBar = () => {
             name="search"
             value={term}
             placeholder="Search"
-            onChange={(e) => setTerm(e.target.value)}
+            onChange={e => setTerm(e.target.value)}
           />
           <button
             type="submit"
@@ -65,42 +65,59 @@ const InfiniteImages = () => {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const fetchImages = useCallback(() => {
+    const fetchingImages = async () => {
+      const [photos, setPhotos] = await axios(`/.netlify/functions/fetch`)
+        .then(res => {
+          setImages([...images, ...res.data.images])
+          setLoading(false)
+          setPhotos([...photos])
+        })
+
+        .catch(error => {
+          console.log("Error happened during fetching!", error)
+        })
+    }
+
+    fetchingImages()
+  }, [images])
+
   // Fetch images on component mount
   useEffect(() => {
     fetchImages()
-  }, [])
+  }, [fetchImages])
 
   // Fetch Images from functions
-  const fetchImages = () => {
-    axios(`/.netlify/functions/fetch`)
-      .then((res) => {
-        setImages([...images, ...res.data.images])
-        setLoading(false)
-      })
-      .catch((error) => {
-        console.log('Error happened during fetching!', error)
-      })
-  }
+  // const fetchImages = () => {
+  //   axios(`/.netlify/functions/fetch`)
+  //     .then((res) => {
+  //       setImages([...images, ...res.data.images])
+  //       setLoading(false)
+  //     })
+  //     .catch((error) => {
+  //       console.log('Error happened during fetching!', error)
+  //     })
+  // }
 
-  const onSearchSubmit = async (searchQuery) => {
-    const response = await axios.get(
-      `https://api.unsplash.com/search/photos?query=${searchQuery}&client_id=${accessKEY}`,
-      {
-        params: {
-          query: `${searchQuery}`,
-        },
-        headers: {
-          Authorization: `Client-ID ${accessKEY}`,
-        },
-      }
-    )
-    setImages({ images: response.data.results })
-  }
+  // const onSearchSubmit = async (searchQuery) => {
+  //   const response = await axios.get(
+  //     `https://api.unsplash.com/search/photos?query=${searchQuery}&client_id=${accessKEY}`,
+  //     {
+  //       params: {
+  //         query: `${searchQuery}`,
+  //       },
+  //       headers: {
+  //         Authorization: `Client-ID ${accessKEY}`,
+  //       },
+  //     }
+  //   )
+  //   setImages({ images: response.data.results })
+  // }
 
   return (
     <>
-      <div className="ui container" style={{ marginTop: '10px' }}>
-        <SearchBar onSubmit={onSearchSubmit} />
+      <div className="ui container" style={{ marginTop: "10px" }}>
+        <SearchBar />
         Found: {images.length} images
       </div>
       <ImageGallery

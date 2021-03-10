@@ -1,11 +1,39 @@
 @import "./variables";
-@import '~@react-md/layout/dist/mixins';
-@import '~@react-md/states/dist/mixins';
-@import '~@react-md/list/dist/mixins';
-@import '~@react-md/theme/dist/mixins';
-@import '~@react-md/typography/dist/mixins';
-@import '~@react-md/utils/dist/mixins';
-@import '~@react-md/form/dist/mixins';
-@import '~@react-md/avatar/dist/mixins';
+
+@import "~react-md/dist/react-md";
+
+@include react-md-utils;
+
+// @import '~@react-md/layout/dist/mixins';
+// @import '~@react-md/states/dist/mixins';
+// @import '~@react-md/list/dist/mixins';
+// @import '~@react-md/theme/dist/mixins';
+// @import '~@react-md/typography/dist/mixins';
+// @import '~@react-md/utils/dist/mixins';
+// @import '~@react-md/form/dist/mixins';
+// @import '~@react-md/avatar/dist/mixins';
 
 // @include react-md-utils;
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      @include rmd-theme-dark;
+    }
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root {
+      @include rmd-theme-light;
+    }
+  }
+  
+  // body.dark,
+  .dark-theme {
+    @include rmd-theme-dark;
+  }
+  
+  // body.light,
+  .light-theme {
+    @include rmd-theme-light;
+  }
+  
