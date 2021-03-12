@@ -2,7 +2,8 @@ import React from 'react'
 // import HomePage from '../components/HomePage'
 // import GetForm from '../components/GetForm'
 import Layout from '../components/Layout'
-import LinkList from '../components/LinkList'
+import FileUpload from '../components/FileUpload'
+// import FileUpload2 from '../components/FileUpload2'
 import MyLink from '../components/MyLink'
 import SEO from '../components/SEO'
 
@@ -38,9 +39,9 @@ const Index = () => {
   return (
     <Layout title={title}>
       <SEO title={title} />
-
       <MyLink />
-      <LinkList key="my-link-list" />
+
+      <FileUpload />
     </Layout>
   )
 }

@@ -9,6 +9,7 @@
 @import 'components/unsplash.css';
 @import 'components/searchapp.css';
 @import 'components/spinner.css';
+@import 'components/upload.css';
 
 main {
   min-height: 100vh;
