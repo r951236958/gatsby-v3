@@ -6,22 +6,24 @@ import { useLocation } from "@reach/router"
 const YoutubePiP = () => {
   const location = useLocation()
 
-  const urlParams = new URLSearchParams(location.pathname)
-  const videoParameter = urlParams.get("v")
-  const youtubeURL = new URLSearchParams(location.search).get("v")
+  // const urlParams = new URLSearchParams(location.pathname)
+  // const videoParameter = urlParams.get("v")
+  const videoParameter = new URLSearchParams(location.search).get("v")
 
   const getVideoFromUrl = url => {
     // https://stackoverflow.com/a/9102270/3276759
 
-    // const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\v=)([^#\\?]*).*/
-    const regExp = /^.*(youtu.be\/|v\/|\/u\/\w\/|embed\/|watch\/\?v=|\&v=)([^#\&\?]*).*/
-    const match = url.match(regExp)
+    const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\v=)([^#\\?]*).*/
+
+    // const match = url.match(regExp)
+    const match = regExp.exec(url)
+
     if (match && match[2].length === 11) {
       return match[2]
     }
 
     const fallbackRegex = /v=([^\\s&#]*)/
-    const fallbackMatch = url.match(fallbackRegex)
+    const fallbackMatch = fallbackRegex.exec(url)
 
     if (fallbackMatch && fallbackMatch[1]) {
       return fallbackMatch[1]
@@ -31,38 +33,34 @@ const YoutubePiP = () => {
   }
 
   const getVideoId = () => {
-    const videoIdFromUrl = getVideoFromUrl(youtubeURL)
-    return videoIdFromUrl ? videoIdFromUrl : youtubeURL
+    const videoIdFromUrl = getVideoFromUrl(videoParameter)
+    return videoIdFromUrl ? videoIdFromUrl : videoParameter
   }
 
   const videoId = getVideoId()
 
-  let videoWrapper
-
-  if (videoParameter) {
-    videoWrapper = (
-      <div className="not-notAvailable">
-        <h1>Define a video using the v query parameter</h1>
-        <p>{youtubeURL}</p>
-        <p>VideoID: {videoId}</p>
-      </div>
-    )
-  } else {
-    videoWrapper = (
-      <div className="youtube-PiP">
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/${videoId}`}
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-    )
-  }
-
-  return <div className="video-wrapper">{videoWrapper}</div>
+  return (
+    <div className="video-wrapper">
+      {!videoParameter ? (
+        <div className="not-notAvailable">
+          <h1>Define a video using the v query parameter</h1>
+          <p>{videoParameter}</p>
+          <p>VideoID: {videoId}</p>
+        </div>
+      ) : (
+        <div className="youtube-PiP">
+          <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default YoutubePiP
