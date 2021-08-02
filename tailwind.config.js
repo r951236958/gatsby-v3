@@ -133,7 +133,10 @@ module.exports = {
       scale: ["dark", "focus-within"],
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require('@tailwindcss/aspect-ratio'),
+  ],
   corePlugins: {
     ringWidth: false,
   },

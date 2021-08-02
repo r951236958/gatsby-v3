@@ -57,8 +57,9 @@ const YoutubePiP = () => {
           )}
         </div>
       ) : (
-        <div className="youtube-PiP">
+        <div className="youtube-PiP aspect-w-16 aspect-h-9">
           <iframe
+            className="absolute inset-0 w-full h-full"
             width="560"
             height="315"
             src={`https://www.youtube.com/embed/${videoId}`}

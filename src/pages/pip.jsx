@@ -5,7 +5,7 @@ import SEO from "../components/SEO"
 import YoutubePiP from "../components/YoutubePiP"
 
 const PiP = () => {
-  const title = "Open Youtube on Safari with PiP"
+  const title = "Youtube PiP"
   return (
     <Layout title={title}>
       <SEO title={title} />
