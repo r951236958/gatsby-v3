@@ -8,7 +8,7 @@ const YoutubePiP = () => {
 
   // const urlParams = new URLSearchParams(location.pathname)
   // const videoParameter = urlParams.get("v")
-  const videoParameter = new URLSearchParams(location.search).get("v")
+  const videoParameter = new URLSearchParams(location.search).get("yt")
 
   const getVideoFromUrl = url => {
     // https://stackoverflow.com/a/9102270/3276759
@@ -32,8 +32,10 @@ const YoutubePiP = () => {
     return null
   }
 
+  const videoIdFromUrl = getVideoFromUrl(videoParameter)
+
   const getVideoId = () => {
-    const videoIdFromUrl = getVideoFromUrl(videoParameter)
+    // const videoIdFromUrl = getVideoFromUrl(videoParameter)
     return videoIdFromUrl ? videoIdFromUrl : videoParameter
   }
 
@@ -41,11 +43,18 @@ const YoutubePiP = () => {
 
   return (
     <div className="video-wrapper">
-      {!videoParameter ? (
+      {videoParameter ? (
         <div className="not-notAvailable">
           <h1>Define a video using the v query parameter</h1>
-          <p>{videoParameter}</p>
-          <p>VideoID: {videoId}</p>
+          <p>VideoURL: {videoParameter}</p>
+          {videoIdFromUrl ? (
+            <>
+              <p>VideoIDFormUrl: {videoIdFromUrl}</p>
+              <p>VideoID: {videoId}</p>
+            </>
+          ) : (
+            <p>VideoID Not Founded. VideoURL: {videoParameter}</p>
+          )}
         </div>
       ) : (
         <div className="youtube-PiP">
