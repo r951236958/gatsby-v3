@@ -1,5 +1,6 @@
 import React from "react"
 import { useLocation } from "@reach/router"
+import { Button } from "gatsby-theme-material-ui"
 
 // const videoWrapper = document.getElementById("video-wrapper")
 
@@ -42,7 +43,7 @@ const YoutubePiP = () => {
   const videoId = getVideoId()
 
   return (
-    <div className="video-wrapper bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 min-h-screen pt-6 pb-12 pxㄧ-0">
+    <div className="video-wrapper bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 min-h-screen pt-6 pb-12 pxㄧ-0">
       {!videoParameter ? (
         <div className="not-notAvailable">
           <h1>Define a video using the v query parameter</h1>
@@ -68,6 +69,41 @@ const YoutubePiP = () => {
           />
         </div>
       )}
+      <div className="ios-shortcut flex flex-row my-8 p-4 text-center justify-center items-center">
+        <div className="flex flex-col max-w-lg md:h-56 bg-gray-700 justify-center items-center rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
+          <div className="py-6 px-8 md:py-0">
+            <h2 className="text-2xl font-bold md:text-gray-100">
+              Youtube PiP 使用子母畫面觀看影片
+            </h2>
+            <p className="mt-2 text-gray-400">
+              下載此捷徑，並新增到自己的捷徑資料庫中。 在{`Youtube App`} 或
+              網頁版透過"分享"選單，用此捷徑開啟後，即可以iOS子母畫面繼續觀看Youtube影片。
+            </p>
+            <div className="float-right">
+              <a
+                href="https://routinehub.co/shortcut/9799/"
+                className="transition duration-500 border-0 text-lg h-12 w-36 bg-red-500 hover:bg-red-700 text-white mt-2 px-3 rounded-md flex items-center justify-center"
+                type="button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Download</span>
+                <i className="ml-2 animate-bounce">
+                  <svg
+                    className="w-4 h-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M.5 9.9a.5.5 0 01.5.5v2.5a1 1 0 001 1h12a1 1 0 001-1v-2.5a.5.5 0 011 0v2.5a2 2 0 01-2 2H2a2 2 0 01-2-2v-2.5a.5.5 0 01.5-.5z" />
+                    <path d="M7.646 11.854a.5.5 0 00.708 0l3-3a.5.5 0 00-.708-.708L8.5 10.293V1.5a.5.5 0 00-1 0v8.793L5.354 8.146a.5.5 0 10-.708.708l3 3z" />
+                  </svg>
+                </i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
