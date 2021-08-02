@@ -43,7 +43,7 @@ const YoutubePiP = () => {
 
   return (
     <div className="video-wrapper">
-      {videoParameter ? (
+      {!videoParameter ? (
         <div className="not-notAvailable">
           <h1>Define a video using the v query parameter</h1>
           <p>VideoURL: {videoParameter}</p>
