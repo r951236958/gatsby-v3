@@ -77,7 +77,7 @@ const SearchPhotos = () => {
   return (
     <div id="searchPhotos">
       <div className="block">
-        <form className="form" onSubmit={onSearchSumbit}>
+        <form className="form max-w-lg mx-auto" onSubmit={onSearchSumbit}>
           <label className="label" htmlFor="query">
             {" "}
             📷
