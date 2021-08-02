@@ -13,7 +13,8 @@ const YoutubePiP = () => {
   const getVideoFromUrl = url => {
     // https://stackoverflow.com/a/9102270/3276759
 
-    const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\v=)([^#\\?]*).*/
+    // const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\v=)([^#\\?]*).*/
+    const regExp = /^.*(youtu.be\/|v\/|\/u\/\w\/|embed\/|watch\/\?v=|\&v=)([^#\&\?]*).*/
     const match = url.match(regExp)
     if (match && match[2].length === 11) {
       return match[2]
