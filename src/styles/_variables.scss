@@ -1,4 +1,5 @@
-
+@import "components/scss/pip";
+@import "components/scss/unsplash";
 @import "~@react-md/theme/dist/color-palette";
 $rmd-theme-dark-elevation: true;
 $rmd-theme-light: false;
@@ -16,7 +17,7 @@ $rmd-theme-secondary: $rmd-amber-a-400;
 
 $rmd-link-color: $rmd-grey-200;
 $rmd-link-hover-color: $rmd-grey-500;
-$rmd-link-visitied-color:$rmd-grey-100;
+$rmd-link-visitied-color: $rmd-grey-100;
 
 @import "~react-md/dist/react-md";
 @include react-md-utils;

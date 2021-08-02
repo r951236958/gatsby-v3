@@ -42,7 +42,7 @@ const YoutubePiP = () => {
   const videoId = getVideoId()
 
   return (
-    <div className="video-wrapper">
+    <div className="video-wrapper bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 min-h-screen pt-6 pb-12 pxㄧ-0">
       {!videoParameter ? (
         <div className="not-notAvailable">
           <h1>Define a video using the v query parameter</h1>
@@ -57,16 +57,15 @@ const YoutubePiP = () => {
           )}
         </div>
       ) : (
-        <div className="youtube-PiP aspect-w-16 aspect-h-9">
+        <div className="video-player  w-full justify-center items-center flex flex-col">
           <iframe
-            className="absolute inset-0 w-full h-full"
             width="560"
             height="315"
             src={`https://www.youtube.com/embed/${videoId}`}
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-          ></iframe>
+          />
         </div>
       )}
     </div>
