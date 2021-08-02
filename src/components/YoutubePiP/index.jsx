@@ -1,16 +1,21 @@
 import React from "react"
+import { useLocation } from "@reach/router"
 
 // const videoWrapper = document.getElementById("video-wrapper")
 
 const YoutubePiP = () => {
-  const urlParams = new URLSearchParams(window.location.search)
+  const location = useLocation()
+
+  const urlParams = new URLSearchParams(location.pathname)
+  // const path = `${props.location.pathname}?${urlParams.toString()}`
   const videoParameter = urlParams.get("v")
 
   let videoWrapper
   if (!videoParameter) {
     videoWrapper = (
       <div className="not-notAvailable">
-        Define a video using the v query parameter
+        <h1>Define a video using the v query parameter</h1>
+        <p>{new URLSearchParams(location.search).get("v")}</p>
       </div>
     )
   } else {
