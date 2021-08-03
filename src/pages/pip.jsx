@@ -6,11 +6,12 @@ import YoutubePiP from "../components/YoutubePiP"
 
 const PiP = () => {
   // const title = "Youtube PiP"
+
   return (
     // <Layout title={title}>
     //   <SEO title={title} />
     // </Layout>
-  <YoutubePiP />
+    <YoutubePiP />
   )
 }
 

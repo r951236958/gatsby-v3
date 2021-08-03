@@ -1,11 +1,21 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useLocation } from "@reach/router"
-import { Button } from "gatsby-theme-material-ui"
+
+import Spinner from "../Spinner"
 
 // const videoWrapper = document.getElementById("video-wrapper")
 
 const YoutubePiP = () => {
   const location = useLocation()
+
+  const [spinner, setSpinner] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setSpinner(false), 1000)
+  }, [])
+
+  // const urlParams = new URLSearchParams(location.search)
+  // const ytParameter = urlParams.get("yt")
 
   // const urlParams = new URLSearchParams(location.pathname)
   // const videoParameter = urlParams.get("v")
@@ -44,31 +54,6 @@ const YoutubePiP = () => {
 
   return (
     <div className="video-wrapper bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 min-h-screen pt-6 pb-12 pxㄧ-0">
-      {!videoParameter ? (
-        <div className="not-notAvailable">
-          <h1>Define a video using the v query parameter</h1>
-          <p>VideoURL: {videoParameter}</p>
-          {videoIdFromUrl ? (
-            <>
-              <p>VideoIDFormUrl: {videoIdFromUrl}</p>
-              <p>VideoID: {videoId}</p>
-            </>
-          ) : (
-            <p>VideoID Not Founded. VideoURL: {videoParameter}</p>
-          )}
-        </div>
-      ) : (
-        <div className="video-player  w-full justify-center items-center flex flex-col">
-          <iframe
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          />
-        </div>
-      )}
       <div className="ios-shortcut flex flex-row my-8 p-4 text-center justify-center items-center">
         <div className="flex flex-col max-w-lg md:h-56 bg-gray-700 justify-center items-center rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
           <div className="py-6 px-8 md:py-0">
@@ -104,6 +89,28 @@ const YoutubePiP = () => {
           </div>
         </div>
       </div>
+      {!videoParameter ? (
+        <div className="not-notAvailable max-w-lg mx-auto p-4">
+          <h2>VideoID Not Founded.</h2>\<p>VideoURL: {videoParameter}</p>
+          <p>VideoIDFormUrl: {videoIdFromUrl}</p>
+          <p>VideoID: {videoId}</p>
+        </div>
+      ) : (
+        <div className="video-player w-full justify-center items-center flex flex-col">
+          {spinner ? (
+            <Spinner />
+          ) : (
+            <iframe
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${videoId}`}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          )}
+        </div>
+      )}
     </div>
   )
 }
